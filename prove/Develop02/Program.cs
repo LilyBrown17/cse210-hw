@@ -5,42 +5,42 @@ class Program
 {
     static void Main(string[] args)
     {
-        int runProgram = 0;
-        Journal newJournal = new Journal();
-        Entry addedEntry = new Entry();
+        int _runProgram = 0;
+        Journal _newJournal = new Journal();
+        Entry _addedEntry = new Entry();
 
-        string currentJournal = InitialLoad();
+        string _currentJournal = "";
 
         Console.WriteLine("Welcome to the Journal!");
 
-        while (runProgram == 0)
+        while (_runProgram == 0)
         {
             Console.WriteLine("\n Please select one of the following choices: \n 1. Write \n 2. Display \n 3. Load \n 4. Save \n 5. Quit");
-            string selection = Console.ReadLine();
+            string _selection = Console.ReadLine();
 
-            if (selection == "1")
+            if (_selection == "1")
             {
-                string myEntry = addedEntry.Write();
-                newJournal.AddEntry(myEntry);
+                string _myEntry = _addedEntry.Write();
+                _newJournal.AddEntry(_myEntry);
             }
-            else if (selection == "2")
+            else if (_selection == "2")
             {
-                DisplayJournal(currentJournal, newJournal);
+                DisplayJournal(_currentJournal, _newJournal);
             }
-            else if (selection == "3")
+            else if (_selection == "3")
             {
-                newJournal = new Journal();
+                _newJournal = new Journal();
                 Console.WriteLine("What is the name of the file?");
-                string filename = Console.ReadLine();
-                currentJournal = Load(filename);
+                string _filename = Console.ReadLine();
+                _currentJournal = Load(_filename);
             }
-            else if (selection == "4")
+            else if (_selection == "4")
             {
-                newJournal.Save();
+                _newJournal.Save();
             }
-            else if (selection == "5")
+            else if (_selection == "5")
             {
-                runProgram = 1;
+                _runProgram = 1;
             }
             else
             {
@@ -51,27 +51,22 @@ class Program
     }
 
 
-    public static string Load(string filename)
+    public static string Load(string _filename)
     {
-        string[] lines = System.IO.File.ReadAllLines(filename);
-        string returnJournal = "";
+        string[] _lines = System.IO.File.ReadAllLines(_filename);
+        string _returnJournal = "";
 
-        foreach (string line in lines)
+        foreach (string _line in _lines)
         {
-            returnJournal = $"{returnJournal}\n{line}";
+            _returnJournal = $"{_returnJournal}\n{_line}";
         }
-        return returnJournal;
+        return _returnJournal;
     }
 
-    public static void DisplayJournal(string myJournal, Journal journal)
+    public static void DisplayJournal(string _myJournal, Journal _journal)
     {
-        string showJournal = journal.ToNewString(myJournal);
-        Console.WriteLine(showJournal);
+        string _showJournal = _journal.ToNewString(_myJournal);
+        Console.WriteLine(_showJournal);
     }
 
-    public static string InitialLoad()
-    {
-        string firstJournal = "";
-        return firstJournal;
-    }
 }

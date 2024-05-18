@@ -4,10 +4,10 @@ class Prompt
 {
     public string Choose()
     {
-        Random randomGenerator = new Random();
-        int choice = randomGenerator.Next(0, 7);
+        Random _randomGenerator = new Random();
+        int _choice = _randomGenerator.Next(0, 7);
 
-        List<string> prompts = 
+        List<string> _prompts = 
         ["Who was the most interesting person I interacted with today?", 
         "What was the best part of my day?",
         "How did I see the hand of the Lord in my life today?",
@@ -17,7 +17,7 @@ class Prompt
         "What did I learn that I can use for tomorrow?",
         "How happy am I with how today went?"];
 
-        string promptChoice = prompts[choice];
-        return promptChoice;
+        string _promptChoice = _prompts[_choice];
+        return _promptChoice;
     }
 }

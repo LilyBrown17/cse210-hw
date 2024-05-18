@@ -2,24 +2,24 @@ using System;
 
 class Entry
 {
-    string newEntry;
+    string _newEntry;
     
     public string Write()
     {
-        Prompt prompt = new Prompt();
-        string result = prompt.Choose();
-        Console.WriteLine(result);
-        string response = Console.ReadLine();
-        string date = Date();
+        Prompt _prompt = new Prompt();
+        string _result = _prompt.Choose();
+        Console.WriteLine(_result);
+        string _response = Console.ReadLine();
+        string _date = Date();
 
-        newEntry = $"Date: {date} - Prompt: {result}\n {response}\n";
-        return newEntry;
+        _newEntry = $"Date: {_date} - Prompt: {_result}\n {_response}\n";
+        return _newEntry;
     }
 
     public string Date()
     {
-        DateTime current = DateTime.Now;
-        string dateText = current.ToShortDateString();
-        return dateText;
+        DateTime _current = DateTime.Now;
+        string _dateText = _current.ToShortDateString();
+        return _dateText;
     }
 }

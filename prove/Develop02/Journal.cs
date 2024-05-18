@@ -7,30 +7,30 @@ class Journal
         
     public void Save()
     {
-        string newJournal = ToNewString("");
+        string _newJournal = ToNewString("");
 
         Console.WriteLine("What would you like to name the file?");
-        string filename = Console.ReadLine();
+        string _filename = Console.ReadLine();
 
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        using (StreamWriter _outputFile = new StreamWriter(_filename))
         {
-            outputFile.WriteLine(newJournal);
+            _outputFile.WriteLine(_newJournal);
         } 
     }
 
-    public void AddEntry(string entry)
+    public void AddEntry(string _entry)
     {
-        entries.Add(entry);
+        _entries.Add(_entry);
     }
 
-    public string ToNewString(string journal)
+    public string ToNewString(string _journal)
     {
-        List<string> entryList = ReturnEntries();
-        foreach(string entry in entryList)
+        List<string> _entryList = ReturnEntries();
+        foreach(string _entry in _entryList)
         {
-            journal = $"{journal} \n \n {entry}";
+            _journal = $"{_journal} \n \n {_entry}";
         }
-        return journal;
+        return _journal;
     }
 
     public List<string> ReturnEntries()
