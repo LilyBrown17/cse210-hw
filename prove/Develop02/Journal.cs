@@ -3,7 +3,7 @@ using System.IO;
 
 class Journal
 {
-    List<string> entries = new List<string>();
+    List<string> _entries = new List<string>();
         
     public void Save()
     {
@@ -35,6 +35,6 @@ class Journal
 
     public List<string> ReturnEntries()
     {
-        return entries;
+        return _entries;
     }
 }
