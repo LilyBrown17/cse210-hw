@@ -77,6 +77,8 @@ class Scripture
 
         int _position = 0;
 
+        int _appendItem = 0;
+
         foreach(string _scriptureWord in _scriptureText)
         {
             foreach(int _wordChoice in _wordPosition)
@@ -84,29 +86,23 @@ class Scripture
                 if (_position == _wordChoice)
                 {
                     _removedWords.Add(_scriptureWord);
-                    _scriptureNew.Add("_");
-                }
-                else 
-                {
-                    _scriptureNew.Add(_scriptureWord);
+                    _appendItem = 1;
                 }
             }
+
+            if(_appendItem == 1)
+            {
+                _scriptureNew.Add("_");
+            }
+            else
+            {
+                _scriptureNew.Add(_scriptureWord);
+            }
+
+            _appendItem = 0;
+
             _position++;
         }
-
-        // for (int _iterate = 0; _iterate < _wordCount; _iterate++)
-        // {
-        //     string _wordFlag = _scriptureText[_iterate];
-
-        //     foreach(int _wordChoice in _wordPosition)
-        //     {
-        //         if (_iterate == _wordChoice)
-        //         {
-        //             _removedWords.Add(_wordFlag);
-        //             _scriptureText[_iterate] = "_";
-        //         }
-        //     }
-        // }
     }
 
     public void CheckAccuracy(int _wordCount, string _reference)
@@ -148,9 +144,6 @@ class Scripture
             }
 
             string _checkedWord = Console.ReadLine();
-
-            _correctWord.ToLower();
-            _checkedWord.ToLower();
 
             if (_correctWord == _checkedWord)
             {
