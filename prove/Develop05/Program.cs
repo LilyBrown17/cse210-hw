@@ -8,7 +8,7 @@ class Program
         int _runProgram = 0;
         List<Goal> _currentGoals = new List<Goal>();
         List<string> _goalList = new List<string>();
-        string _myGoals = "";
+        string _myGoals;
         int _myScore = 0;
 
         while (_runProgram == 0)
@@ -67,8 +67,7 @@ class Program
                     }
                     else
                     {
-                         Console.WriteLine("I'm sorry, that's not a valid input.");
-                        pointValue = 0;
+                        Console.WriteLine("I'm sorry, that's not a valid input.");
                     }
                 }
                 else if(selection == "3")
@@ -107,19 +106,16 @@ class Program
                             else
                             {
                                 Console.WriteLine("I'm sorry, that's not a valid input.");
-                                pointValue = 0;
                             }
                         }
                         else
                         {
                             Console.WriteLine("I'm sorry, that's not a valid input.");
-                            pointValue = 0;
                         }
                     }
                     else
                     {
                         Console.WriteLine("I'm sorry, that's not a valid input.");
-                        pointValue = 0;
                     }
                 }
                 else
