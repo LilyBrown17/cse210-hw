@@ -145,15 +145,8 @@ class Program
             }
             else if (_selection == "5")
             {
-                bool _run = true;
-
                 Console.WriteLine("Which goal would you like to work on? Enter the goal's name.");
                 string _goalName = Console.ReadLine();
-
-                Console.WriteLine("What kind of goal is it? \n 1. Simple Goal \n 2. Eternal Goal \n 3. Checklist Goal");
-                string _goalType = Console.ReadLine();
-
-                Goal _recordedGoal;
 
                 bool _isTrue = false;
 
@@ -162,22 +155,21 @@ class Program
                     string _testName = currentGoal.ReturnName();
                     if(_testName == _goalName)
                     {
-                        _recordedGoal = currentGoal;
+                        Goal _recordedGoal = currentGoal;
+
+                        Console.WriteLine("Have you completed this goal? Y/N");
+                        string _input = Console.ReadLine();
+                        int _newScore = _recordedGoal.RecordEvent(_input);
+
+                        _myScore += _newScore;
+
+                        Console.WriteLine($"Your current score is {_myScore}.");
+                        
                         _isTrue = true;
                     }
                 }
 
-                if(_isTrue == true)
-                {
-                    Console.WriteLine("Have you completed this goal? Y/N");
-                    string _input = Console.ReadLine();
-                    int _newScore = _recordedGoal.RecordEvent(_input);
-
-                    _myScore += _newScore;
-
-                    Console.WriteLine($"Your current score is {_myScore}.");
-                }
-                else
+                if(_isTrue == false)
                 {
                     Console.WriteLine("I'm sorry, that's not a valid input.");
                 }
