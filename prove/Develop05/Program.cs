@@ -36,7 +36,7 @@ class Program
                     {
                         pointValue = _result;
 
-                        Simple newSimple = new Simple(name, description, pointValue);
+                        Goal newSimple = new Simple(name, description, pointValue);
                         _currentGoals.Add(newSimple);
                         _goalList.Add(newSimple.GoalString());
                     }
@@ -61,7 +61,7 @@ class Program
                     {
                         pointValue = _result;
 
-                        Eternal newEternal = new Eternal(name, description, pointValue);
+                        Goal newEternal = new Eternal(name, description, pointValue);
                         _currentGoals.Add(newEternal);
                         _goalList.Add(newEternal.GoalString());
                     }
@@ -100,7 +100,7 @@ class Program
                             {
                                 timesCompleted = cresult;
 
-                                Checklist newChecklist = new Checklist(name, description, pointValue, bonusValue, timesCompleted);
+                                Goal newChecklist = new Checklist(name, description, pointValue, bonusValue, timesCompleted);
                                 _currentGoals.Add(newChecklist);
                                 _goalList.Add(newChecklist.GoalString());
                             }
@@ -153,56 +153,33 @@ class Program
                 Console.WriteLine("What kind of goal is it? \n 1. Simple Goal \n 2. Eternal Goal \n 3. Checklist Goal");
                 string _goalType = Console.ReadLine();
 
-                if(_goalType == "1")
-                {
-                    Simple _recordedGoal;
-                }
-                else if(_goalType == "2")
-                {
-                    Eternal _recordedGoal;
-                }
-                else if(_goalType == "3")
-                {
-                    Checklist _recordedGoal;
-                }
-                else
-                {
-                    _run = false;
-                }
+                Goal _recordedGoal;
 
-                if (_run == true)
-                {
-                    bool _isTrue = false;
+                bool _isTrue = false;
 
-                    foreach(Goal currentGoal in _currentGoals)
+                foreach(Goal currentGoal in _currentGoals)
+                {
+                    string _testName = currentGoal.ReturnName();
+                    if(_testName == _goalName)
                     {
-                        string _testName = currentGoal.ReturnName();
-                        if(_testName == _goalName)
-                        {
-                            _recordedGoal = currentGoal;
-                            _isTrue = true;
-                        }
+                        _recordedGoal = currentGoal;
+                        _isTrue = true;
                     }
+                }
 
-                    if(_isTrue == true)
-                    {
-                        Console.WriteLine("Have you completed this goal? Y/N");
-                        string _input = Console.ReadLine();
-                        int _newScore = _recordedGoal.RecordEvent(_input);
+                if(_isTrue == true)
+                {
+                    Console.WriteLine("Have you completed this goal? Y/N");
+                    string _input = Console.ReadLine();
+                    int _newScore = _recordedGoal.RecordEvent(_input);
 
-                        _myScore += _newScore;
+                    _myScore += _newScore;
 
-                        Console.WriteLine($"Your current score is {_myScore}.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("I'm sorry, that's not a valid input.");
-                    }
+                    Console.WriteLine($"Your current score is {_myScore}.");
                 }
                 else
                 {
                     Console.WriteLine("I'm sorry, that's not a valid input.");
-                    
                 }
             }
             else if (_selection == "6")
